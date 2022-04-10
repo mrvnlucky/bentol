@@ -15,7 +15,8 @@ module.exports = {
       'header': '#a35709',
       'body': '#773e35',
       'white': '#ffffff',
-      'blue': '#0075FF'
+      'blue': '#0075FF',
+      'black': '#0D0221'
     },
     fontFamily: {
       'nunito': ['nunito', 'sans-serif'],
