@@ -40,7 +40,7 @@ const Register = () => {
                             <div className="grid grid-cols-3">
                                 <div></div>
                                 <button class="h-9 px-10 m-2 bg-blue rounded-lg text-white place-item-start">Daftar</button>
-                                <a href="login" className=" text-blue text-center p-3">Punya Akun?</a>
+                                <a href="login" className=" text-blue text-center p-3 hover:underline">Punya Akun?</a>
                             </div>
                         </form>
                     </div >

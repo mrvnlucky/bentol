@@ -28,7 +28,7 @@ const Login = () => {
                             <div className="grid grid-cols-3">
                                 <div></div>
                                 <button class="h-9 px-10 m-2 bg-blue rounded-lg text-white place-item-start">Masuk</button>
-                                <a href="register" className=" text-blue text-center p-3">Lupa Sandi?</a>
+                                <a href="register" className=" text-blue text-center p-3 hover:underline">Lupa Sandi?</a>
                             </div>
                         </form>
                     </div >
