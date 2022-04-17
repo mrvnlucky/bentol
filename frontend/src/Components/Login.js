@@ -13,11 +13,11 @@ const Login = () => {
                         <form className='flex flex-col'>
                             <div className='flex flex-row'>
                                 <label for='email' className='w-1/3'>Alamat E-mail</label>
-                                <input type='email' className='mb-3.5 border border-silver rounded w-2/3 p-1 pl-2'></input>
+                                <input type='email' className='mb-3.5 border border-silver rounded w-2/3 p-1 pl-2' placeholder='Masukkan Alamat E-Mail'></input>
                             </div>
                             <div className='flex flex-row'>
                                 <label for='password' className='w-1/3'>Sandi</label>
-                                <input type='password' className='mb-3.5 border border-silver rounded w-2/3 p-1 pl-2'></input>
+                                <input type='password' className='mb-3.5 border border-silver rounded w-2/3 p-1 pl-2' placeholder='Masukkan Sandi'></input>
                             </div>
                             <div className='grid place-items-center'>
                                 <div>
