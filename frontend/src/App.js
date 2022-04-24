@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React from 'react'
 import Login from './Components/Login.js'
 import Register from './Components/Register.js'
+import EditProfile from './Components/EditProfile.js'
+import Profile from './Components/Profile.js'
 import './Styles/App.css'
 
 const App = () => {
@@ -11,6 +13,8 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/editprofile" element={<EditProfile />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </div>

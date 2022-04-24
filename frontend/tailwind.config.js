@@ -12,8 +12,8 @@ module.exports = {
       'silver': '#C4C4C4'
     },
     textColor: {
-      'header': '#a35709',
-      'body': '#773e35',
+      'dark': '#828282',
+      'dark-blue': '#26408B',
       'white': '#ffffff',
       'blue': '#0075FF',
       'black': '#0D0221'
