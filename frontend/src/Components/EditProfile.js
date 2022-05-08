@@ -19,7 +19,7 @@ const EditProfile = () => {
                                 <input type='email' className='mb-3.5 border border-silver rounded w-1/3 p-1 pl-2' placeholder='Masukkan Alamat E-mail'></input>
                                 <div className='w-2/3'></div>
                             </div>
-                            <button class="m-3 ml-0 h-9 px-10 bg-blue rounded-lg text-white place-item-start">Simpan</button>
+                            <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">Simpan</button>
                         </div>
                         <div className='m-8'>
                             <h1 className='font-bold text-4xl underline'>INFO KENDARAAN</h1>
@@ -36,9 +36,9 @@ const EditProfile = () => {
                                     <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                                         <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                             <div class="py-1">
-                                                <a href="javascript:void(0)" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Honda</a>
-                                                <a href="javascript:void(0)" tabindex="1" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Toyota</a>
-                                                <a href="javascript:void(0)" tabindex="2" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mazda</a>
+                                                <a href="javascript:void(0)" tabindex="0" class="hover:bg-silver text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Honda</a>
+                                                <a href="javascript:void(0)" tabindex="1" class="hover:bg-silver text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Toyota</a>
+                                                <a href="javascript:void(0)" tabindex="2" class="hover:bg-silver text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mazda</a>
                                             </div>
                                         </div>
                                     </div>
@@ -61,15 +61,15 @@ const EditProfile = () => {
                                                 <p class="text-sm leading-5">Merk Mobil</p>
                                             </div>
                                             <div class="py-1">
-                                                <a href="javascript:void(0)" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mobil 1</a>
-                                                <a href="javascript:void(0)" tabindex="1" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mobil 2</a>
-                                                <a href="javascript:void(0)" tabindex="2" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mobil 3</a>
+                                                <a href="javascript:void(0)" tabindex="0" class="hover:bg-silver text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mobil 1</a>
+                                                <a href="javascript:void(0)" tabindex="1" class="hover:bg-silver text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mobil 2</a>
+                                                <a href="javascript:void(0)" tabindex="2" class="hover:bg-silver text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Mobil 3</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="m-3 ml-0 h-9 px-10 bg-blue rounded-lg text-white place-item-start">Simpan</button>
+                            <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">Simpan</button>
                         </div>
                     </div>
                 </div>

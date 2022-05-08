@@ -5,7 +5,7 @@ import Likes from '../assets/Like.png'
 const Article = () => {
     return (
         <><LogNavbar />
-            <div className='grid grid-cols-2 justify-items-center m-4 mt-8 font-nunito gap-y-10'>
+            <div className='grid grid-cols-2 justify-items-center m-4 mt-8 font-nunito gap-y-10 tracking-wide'>
                 <div class="max-w-xl bg-white rounded-lg border border-white shadow-lg">
                     <a href="#">
                         <img class="rounded-t-lg" src="https://imgx.motorplus-online.com/crop/0x0:0x0/700x465/filters:watermark(file/2017/gridoto/img/watermark_motorplus.png,5,5,60)/photo/gridoto/2018/04/06/3381567926.jpg" alt="" />
