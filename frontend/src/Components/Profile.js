@@ -17,7 +17,7 @@ const Profile = () => {
                                 <label for='email' className='text-3xl font-bold w-1/4'>E-mail</label>
                                 <span className='w-3/4 text-3xl font-bold text-dark-blue'>Hipjurahman69@hotmail.com</span>
                             </div>
-                            <button class="m-3 ml-0 h-9 px-10 bg-blue rounded-lg text-white place-item-start">Simpan</button>
+                            <button class="m-3 ml-0 h-9 px-10 bg-blue rounded-lg text-white place-item-start">Edit</button>
                         </div>
                         <div className='m-8'>
                             <h1 className='font-bold text-4xl underline'>INFO KENDARAAN</h1>
@@ -29,7 +29,7 @@ const Profile = () => {
                                 <label for='model' className='text-3xl font-bold w-1/4'>Model Kendaraan</label>
                                 <span className='w-3/4 text-3xl font-bold text-dark-blue'>Freed</span>
                             </div>
-                            <button class="m-3 ml-0 h-9 px-10 bg-blue rounded-lg text-white place-item-start">Simpan</button>
+                            <button class="m-3 ml-0 h-9 px-10 bg-blue rounded-lg text-white place-item-start">Edit</button>
                         </div>
                     </div>
                 </div>
