@@ -64,7 +64,7 @@ const Article = () => {
                         <a href="#">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-black">Siap-Siap Harga Pertalite & Pertamax Naik, Cek Daftar Harga BBM Pertamina April 2022</h5>
                         </a>
-                        <p class="mb-3 font-bold text-gray-700 text-blue">Kamis, 7 April 2022</p>
+                        <p class="mb-3 font-bold text-blue">Kamis, 7 April 2022</p>
                     </div>
                     <div className='flex flex-row justify-between p-5'>
                         <div className='box-border h-15 w-20 rounded-md bg-crystal flex flex-row items-center p-1 px-3'>

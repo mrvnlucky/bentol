@@ -9,6 +9,7 @@ module.exports = {
       'white': '#FFFFFF',
       'dark-blue': '#26408B',
       'crystal': '#A6CFD5',
+      'dark-crystal': '#95BABF',
       'silver': '#C4C4C4'
     },
     textColor: {

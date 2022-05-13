@@ -5,6 +5,7 @@ import Register from './Components/Register.js'
 import EditProfile from './Components/EditProfile.js'
 import Profile from './Components/Profile.js'
 import Article from './Components/Article.js'
+import ArticleDetails from './Components/ArticleDetails.js';
 import './Styles/App.css'
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path='/article' element={<Article />} />
+          <Route path='/articledetails' element={<ArticleDetails />} />
         </Routes>
       </Router>
     </div>
