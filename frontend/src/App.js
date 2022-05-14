@@ -5,7 +5,8 @@ import Register from './Components/Register.js'
 import EditProfile from './Components/EditProfile.js'
 import Profile from './Components/Profile.js'
 import Article from './Components/Article.js'
-import ArticleDetails from './Components/ArticleDetails.js';
+import ArticleDetails from './Components/ArticleDetails.js'
+import Dashboard from './Components/Dashboard.js'
 import './Styles/App.css'
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Routes>
+          <Route exact path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/editprofile" element={<EditProfile />} />
