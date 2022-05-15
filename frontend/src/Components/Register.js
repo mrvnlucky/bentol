@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import "../Styles/Register.css";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
@@ -39,7 +39,6 @@ const Register = () => {
 
   return (
     <>
-      <Navbar />
       <body className="body-bg min-h-screen md:px-0 align-middle grid content-center font-nunito tracking-wide">
         <div>
           <div className="text-center font-nunito font-bold mb-2">

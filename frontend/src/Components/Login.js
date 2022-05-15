@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import "../Styles/Login.css";
 import AuthContext from "../context/AuthContext.js";
 
@@ -38,7 +38,6 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <body className="body-bg min-h-screen md:px-0 align-middle grid content-center font-nunito tracking-wide">
         <div>
           <div className="text-center font-nunito font-bold mb-2">

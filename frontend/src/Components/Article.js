@@ -1,11 +1,10 @@
 import React from "react";
-import LogNavbar from "./LogNavbar";
+// import LogNavbar from "./LogNavbar";
 import Likes from "../assets/Like.png";
 //import '../Styles/Article.css'
 const Article = () => {
   return (
     <>
-      <LogNavbar />
       <div className="grid grid-cols-2 justify-items-center m-4 mt-8 font-nunito gap-y-10 tracking-wide">
         <div class="max-w-xl bg-white rounded-lg border border-white shadow-lg">
           <a href="#">

@@ -12,6 +12,7 @@ import { AuthContextProvider } from "./context/AuthContext.js";
 import axios from "axios";
 
 import "./Styles/App.css";
+import Navbar from "./Components/Navbar.js";
 axios.defaults.withCredentials = true;
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
     <div className="App">
       <AuthContextProvider>
         <Router>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />

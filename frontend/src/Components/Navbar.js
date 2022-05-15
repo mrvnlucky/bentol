@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../Styles/Navbar.css";
 import Logo from "../assets/logoA.png";
 import { Link } from "react-router-dom";
+
+import Profile from "../assets/User.png";
+import Exit from "../assets/Logout.png";
+import AuthContext from "../context/AuthContext.js";
+
 const Navbar = () => {
+  // Check if loggedin
+  const { loggedIn } = useContext(AuthContext);
+
   return (
     <nav class="bg-blue px-2 sm:px-4 py-2.5 font-nunito tracking-wide sticky top-0">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
@@ -14,18 +22,36 @@ const Navbar = () => {
             </span>
           </div>
         </Link>
-        <div>
-          <Link to="/login">
-            <button class="h-9 px-10 m-2 bg-white hover:bg-silver rounded-lg text-black place-item-start">
-              Masuk
-            </button>
-          </Link>
-          <Link to="/register">
-            <button class="h-9 px-10 m-2 bg-white hover:bg-silver rounded-lg text-black place-item-start">
-              Daftar
-            </button>
-          </Link>
-        </div>
+        {loggedIn === false && (
+          <div>
+            <Link to="/login">
+              <button class="h-9 px-10 m-2 bg-white hover:bg-silver rounded-lg text-black place-item-start">
+                Masuk
+              </button>
+            </Link>
+            <Link to="/register">
+              <button class="h-9 px-10 m-2 bg-white hover:bg-silver rounded-lg text-black place-item-start">
+                Daftar
+              </button>
+            </Link>
+          </div>
+        )}
+        {loggedIn === true && (
+          <div className="flex">
+            <a href="/" class="flex">
+              <img src={Profile} alt="logo bentol" className="w-8" />
+              <span class="self-center ml-2 text-sm whitespace-nowrap text-white">
+                PROFIL
+              </span>
+            </a>
+            <a href="/" class="ml-12 flex">
+              <img src={Exit} alt="logo bentol" className="w-8" />
+              <span class="self-center ml-2 text-sm whitespace-nowrap text-white">
+                KELUAR
+              </span>
+            </a>
+          </div>
+        )}
       </div>
     </nav>
   );
