@@ -31,7 +31,7 @@ const Register = () => {
       //   registerData
       // );
       await getLoggedIn();
-      navigate("/");
+      navigate("/", { replace: true });
     } catch (err) {
       console.error(err);
     }

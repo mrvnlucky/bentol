@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
 import Login from "./Components/Login.js";
 import Register from "./Components/Register.js";
 import EditProfile from "./Components/EditProfile.js";
@@ -9,8 +9,10 @@ import Map from "./Components/Map.js";
 import Homepage from "./Components/Homepage.js";
 import ArticleDetails from "./Components/ArticleDetails.js";
 import { AuthContextProvider } from "./context/AuthContext.js";
+import axios from "axios";
 
 import "./Styles/App.css";
+axios.defaults.withCredentials = true;
 
 const App = () => {
   return (

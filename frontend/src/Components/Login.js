@@ -30,7 +30,7 @@ const Login = () => {
       //   loginData
       // );
       await getLoggedIn();
-      navigate("/");
+      navigate("/", { replace: true });
     } catch (err) {
       console.error(err);
     }
