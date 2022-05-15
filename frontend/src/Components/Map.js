@@ -19,8 +19,8 @@ const Map = () => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [0, 0],
-      zoom: 1,
+      center: [106.82916, -6.17535],
+      zoom: 12,
     });
 
     // Add navigation control (the +/- zoom buttons)
