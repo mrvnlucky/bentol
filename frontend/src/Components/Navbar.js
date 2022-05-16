@@ -14,8 +14,10 @@ const Navbar = () => {
   // Check if loggedin
   const { loggedIn } = useContext(AuthContext);
 
-  var decoded = jwtDecode(Cookies.get("token"));
-  const tokenId = decoded.user;
+  function getUserIdFromToken() {
+    var decoded = jwtDecode(Cookies.get("token"));
+    return decoded.user;
+  }
 
   return (
     <nav class="bg-blue px-2 sm:px-4 py-2.5 font-nunito tracking-wide sticky top-0">
@@ -44,7 +46,7 @@ const Navbar = () => {
         )}
         {loggedIn === true && (
           <div className="flex">
-            <Link to={`/profile/${tokenId}`}>
+            <Link to={`/profile/${getUserIdFromToken()}`}>
               <div class="flex">
                 <img src={Profile} alt="logo bentol" className="w-8" />
                 <span class="self-center ml-2 text-sm whitespace-nowrap text-white">

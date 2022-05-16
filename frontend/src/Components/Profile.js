@@ -12,8 +12,10 @@ const Profile = () => {
 
   const { id } = useParams();
 
-  var decoded = jwtDecode(Cookies.get("token"));
-  const tokenId = decoded.user;
+  function getUserIdFromToken() {
+    var decoded = jwtDecode(Cookies.get("token"));
+    return decoded.user;
+  }
 
   // console.log(tokenId);
   useEffect(() => {
@@ -49,7 +51,7 @@ const Profile = () => {
                   {email}
                 </span>
               </div>
-              <Link to={`/editprofile/${tokenId}`}>
+              <Link to={`/editprofile/${getUserIdFromToken()}`}>
                 <button
                   // onClick={navigate(`/editprofile/${tokenId}`)}
                   class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start"
