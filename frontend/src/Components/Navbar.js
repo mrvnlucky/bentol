@@ -14,9 +14,17 @@ const Navbar = () => {
   // Check if loggedin
   const { loggedIn } = useContext(AuthContext);
 
+  // function getUserIdFromToken() {
+  //   var decoded = jwtDecode(Cookies.get("token"));
+  //   return decoded.user;
+  // }
   function getUserIdFromToken() {
-    var decoded = jwtDecode(Cookies.get("token"));
-    return decoded.user;
+    if (!loggedIn) {
+      return;
+    } else if (loggedIn) {
+      var decoded = jwtDecode(Cookies.get("token"));
+      return decoded.user;
+    }
   }
 
   return (

@@ -7,11 +7,7 @@ function AuthContextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
 
   async function getLoggedIn() {
-    // const loggedInRes = await axios.get("http://localhost:5000/user/loggedIn");
-    const loggedInRes = await axios.get(
-      "https://bentol-backend.herokuapp.com/user/loggedIn"
-    );
-
+    const loggedInRes = await axios.get("http://localhost:5000/user/loggedIn");
     setLoggedIn(loggedInRes.data);
   }
 

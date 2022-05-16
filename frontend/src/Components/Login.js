@@ -24,11 +24,7 @@ const Login = () => {
         password,
       };
 
-      // await axios.post("http://localhost:5000/user/login", loginData);
-      await axios.post(
-        "https://bentol-backend.herokuapp.com/user/login",
-        loginData
-      );
+      await axios.post("http://localhost:5000/user/login", loginData);
 
       await getLoggedIn();
       navigate("/", { replace: true });
