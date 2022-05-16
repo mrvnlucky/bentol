@@ -26,7 +26,7 @@ const Login = () => {
 
       // await axios.post("http://localhost:5000/user/login", loginData);
       await axios.post(
-        "https://bentol-backend.herokuapp.com//user/login",
+        "https://bentol-backend.herokuapp.com/user/login",
         loginData
       );
 
