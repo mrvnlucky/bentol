@@ -25,11 +25,11 @@ const Register = () => {
         passwordVerify,
       };
 
-      await axios.post("http://localhost:5000/user/register", registerData);
-      // await axios.post(
-      //   "https://mern-auth-template-tutorial.herokuapp.com/auth/",
-      //   registerData
-      // );
+      // await axios.post("http://localhost:5000/user/register", registerData);
+      await axios.post(
+        "https://bentol-backend.herokuapp.com/user/register",
+        registerData
+      );
       await getLoggedIn();
       navigate("/", { replace: true });
     } catch (err) {

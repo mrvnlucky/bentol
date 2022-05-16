@@ -14,7 +14,10 @@ const EditProfile = () => {
   }, []);
 
   const getUserById = async () => {
-    const userRes = await axios.get(`http://localhost:5000/user/${id}`);
+    // const userRes = await axios.get(`http://localhost:5000/user/${id}`);
+    const userRes = await axios.get(
+      `https://bentol-backend.herokuapp.com//user/${id}`
+    );
     setName(userRes.data.name);
     setEmail(userRes.data.email);
   };
@@ -26,7 +29,11 @@ const EditProfile = () => {
         name,
         email,
       };
-      await axios.patch(`http://localhost:5000/user/${id}`, userData);
+      // await axios.patch(`http://localhost:5000/user/${id}`, userData);
+      await axios.patch(
+        `https://bentol-backend.herokuapp.com//user/${id}`,
+        userData
+      );
       navigate(`/profile/${id}`);
     } catch (err) {
       console.error(err);

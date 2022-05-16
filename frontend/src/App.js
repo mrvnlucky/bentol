@@ -5,7 +5,7 @@ import Register from "./Components/Register.js";
 import EditProfile from "./Components/EditProfile.js";
 import Profile from "./Components/Profile.js";
 import Article from "./Components/Article.js";
-import Map from "./Components/Map.js";
+// import Map from "./Components/Map.js";
 import Homepage from "./Components/Homepage.js";
 import ArticleDetails from "./Components/ArticleDetails.js";
 import { AuthContextProvider } from "./context/AuthContext.js";
