@@ -13,8 +13,8 @@ import axios from "axios";
 
 import "./Styles/App.css";
 import Navbar from "./Components/Navbar.js";
-axios.defaults.withCredentials = true;
 
+axios.defaults.withCredentials = true;
 const App = () => {
   return (
     <div className="App">
@@ -22,13 +22,13 @@ const App = () => {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/editprofile" element={<EditProfile />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/article" element={<Article />} />
-            <Route path="/articledetails" element={<ArticleDetails />} />
+            <Route exact path="/" element={<Homepage />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/editprofile/:id" element={<EditProfile />} />
+            <Route exact path="/profile/:id" element={<Profile />} />
+            <Route exact path="/article" element={<Article />} />
+            <Route exact path="/articledetails" element={<ArticleDetails />} />
           </Routes>
         </Router>
       </AuthContextProvider>

@@ -1,7 +1,60 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 // import LogNavbar from "./LogNavbar";
 import "../Styles/EditProfile.css";
+
 const EditProfile = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const { id } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    getUserById();
+  }, []);
+
+  const getUserById = async () => {
+    const userRes = await axios.get(`http://localhost:5000/user/${id}`);
+    setName(userRes.data.name);
+    setEmail(userRes.data.email);
+  };
+
+  const updateUser = async (e) => {
+    e.preventDefault();
+    try {
+      const userData = {
+        name,
+        email,
+      };
+      await axios.patch(`http://localhost:5000/user/${id}`, userData);
+      navigate(`/profile/${id}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // async function register(e) {
+  //   e.preventDefault();
+
+  //   try {
+  //     const registerData = {
+  //       name,
+  //       email,
+  //       password,
+  //       passwordVerify,
+  //     };
+
+  //     await axios.post("http://localhost:5000/user/register", registerData);
+  //     // await axios.post(
+  //     //   "https://mern-auth-template-tutorial.herokuapp.com/auth/",
+  //     //   registerData
+  //     // );
+  //     await getLoggedIn();
+  //     navigate("/", { replace: true });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
   return (
     <>
       <body className="body-bg min-h-screen md:px-0 align-middle grid font-nunito tracking-wide">
@@ -9,31 +62,40 @@ const EditProfile = () => {
           <div className="flex flex-col">
             <div className="m-8">
               <h1 className="font-bold text-4xl underline">PROFIL</h1>
-              <div className="m-3 ml-0 flex flex-row">
-                <label for="name" className="text-3xl font-bold w-1/3">
-                  Nama
-                </label>
-                <input
-                  type="name"
-                  className="mb-3.5 border border-silver rounded w-1/3 p-1 pl-2"
-                  placeholder="Masukkan Nama Lengkap"
-                ></input>
-                <div className="w-2/3"></div>
-              </div>
-              <div className="m-3 ml-0 flex flex-row">
-                <label for="email" className="text-3xl font-bold w-1/3">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  className="mb-3.5 border border-silver rounded w-1/3 p-1 pl-2"
-                  placeholder="Masukkan Alamat E-mail"
-                ></input>
-                <div className="w-2/3"></div>
-              </div>
-              <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
-                Simpan
-              </button>
+              <form onSubmit={updateUser}>
+                <div className="m-3 ml-0 flex flex-row">
+                  <label for="name" className="text-3xl font-bold w-1/3">
+                    Nama
+                  </label>
+                  <input
+                    type="name"
+                    className="mb-3.5 border border-silver rounded w-1/3 p-1 pl-2"
+                    // placeholder="Masukkan Nama Lengkap"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  ></input>
+                  <div className="w-2/3"></div>
+                </div>
+                <div className="m-3 ml-0 flex flex-row">
+                  <label for="email" className="text-3xl font-bold w-1/3">
+                    E-mail
+                  </label>
+                  <input
+                    type="email"
+                    className="mb-3.5 border border-silver rounded w-1/3 p-1 pl-2"
+                    // placeholder="Masukkan Alamat E-mail"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  ></input>
+                  <div className="w-2/3"></div>
+                </div>
+                <button
+                  type="submit"
+                  class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start"
+                >
+                  Simpan
+                </button>
+              </form>
             </div>
             <div className="m-8">
               <h1 className="font-bold text-4xl underline">INFO KENDARAAN</h1>

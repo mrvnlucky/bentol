@@ -25,7 +25,7 @@ const Register = () => {
         passwordVerify,
       };
 
-      await axios.post("http://localhost:5000/auth/register", registerData);
+      await axios.post("http://localhost:5000/user/register", registerData);
       // await axios.post(
       //   "https://mern-auth-template-tutorial.herokuapp.com/auth/",
       //   registerData

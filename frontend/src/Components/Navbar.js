@@ -7,9 +7,15 @@ import Profile from "../assets/User.png";
 import Exit from "../assets/Logout.png";
 import AuthContext from "../context/AuthContext.js";
 
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
+
 const Navbar = () => {
   // Check if loggedin
   const { loggedIn } = useContext(AuthContext);
+
+  var decoded = jwtDecode(Cookies.get("token"));
+  const tokenId = decoded.user;
 
   return (
     <nav class="bg-blue px-2 sm:px-4 py-2.5 font-nunito tracking-wide sticky top-0">
@@ -38,12 +44,14 @@ const Navbar = () => {
         )}
         {loggedIn === true && (
           <div className="flex">
-            <a href="/" class="flex">
-              <img src={Profile} alt="logo bentol" className="w-8" />
-              <span class="self-center ml-2 text-sm whitespace-nowrap text-white">
-                PROFIL
-              </span>
-            </a>
+            <Link to={`/profile/${tokenId}`}>
+              <div class="flex">
+                <img src={Profile} alt="logo bentol" className="w-8" />
+                <span class="self-center ml-2 text-sm whitespace-nowrap text-white">
+                  PROFIL
+                </span>
+              </div>
+            </Link>
             <a href="/" class="ml-12 flex">
               <img src={Exit} alt="logo bentol" className="w-8" />
               <span class="self-center ml-2 text-sm whitespace-nowrap text-white">
