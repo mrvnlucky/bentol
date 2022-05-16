@@ -3,7 +3,8 @@ import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-load
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import "../Styles/Map.css";
 
-mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
+mapboxgl.accessToken =
+  "pk.eyJ1IjoibWFydmluMTkwMDEiLCJhIjoiY2wyZWNoaDh3MTZ1bTNqbGFlb2VtdjkzdyJ9.xv0Q840ksCmbWY7HX_l2sQ";
 
 const Map = () => {
   const mapContainerRef = useRef(null);
