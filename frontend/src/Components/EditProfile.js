@@ -16,7 +16,7 @@ const EditProfile = () => {
   const getUserById = async () => {
     // const userRes = await axios.get(`http://localhost:5000/user/${id}`);
     const userRes = await axios.get(
-      `https://bentol-backend.herokuapp.com//user/${id}`
+      `https://bentol-backend.herokuapp.com/user/${id}`
     );
     setName(userRes.data.name);
     setEmail(userRes.data.email);
