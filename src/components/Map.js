@@ -75,13 +75,22 @@ const Map = () => {
   };
 
   const getLiterConsumption = () => {
-    return Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 100) / 100;
+    if (!user) {
+      return Math.round((routeDistance / 1000 / 10) * 100) / 100;
+    } else {
+      return Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 100) / 100;
+    }
   };
 
   const getPriceForTrip = () => {
-    return (
-      Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 7000 * 100) / 100
-    );
+    if (!user) {
+      return Math.round((routeDistance / 1000 / 10) * 7000 * 100) / 100;
+    } else {
+      return (
+        Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 7000 * 100) /
+        100
+      );
+    }
   };
 
   return (
@@ -96,19 +105,11 @@ const Map = () => {
           <label for="pertalite">pertalite</label>
         </div>
 
-        {user ? (
-          <div>
-            <div>Distance: {getDistance()} KM</div>
-            <div>Liter: {getLiterConsumption()} L</div>
-            <div>Rp: {getPriceForTrip()} rupiah</div>
-          </div>
-        ) : (
-          <div>
-            <div>Distance: {getDistance()} KM</div>
-            <div>Liter: {getLiterConsumption()} L</div>
-            <div>Rp: {getPriceForTrip()} rupiah</div>
-          </div>
-        )}
+        <div>
+          <div>Distance: {getDistance()} KM</div>
+          <div>Liter: {getLiterConsumption()} L</div>
+          <div>Rp: {getPriceForTrip()} rupiah</div>
+        </div>
       </div>
     </div>
   );
