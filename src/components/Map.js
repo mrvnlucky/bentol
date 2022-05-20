@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
-import "../Styles/Map.css";
+import "../styles/Map.css";
+import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../features/auth/authSlice";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibWFydmluMTkwMDEiLCJhIjoiY2wyZWNoaDh3MTZ1bTNqbGFlb2VtdjkzdyJ9.xv0Q840ksCmbWY7HX_l2sQ";
@@ -13,6 +15,10 @@ const Map = () => {
   // const [lat, setLat] = useState(34);
   // const [zoom, setZoom] = useState(1.5);
   const [routeDistance, setRouteDistance] = useState("");
+
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
 
   // Initialize map when component mounts
   useEffect(() => {
@@ -58,8 +64,25 @@ const Map = () => {
     });
 
     // Clean up on unmount
-    return () => map.remove();
+    return () => {
+      map.remove();
+      dispatch(reset());
+    };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const getDistance = () => {
+    return Math.round((routeDistance / 1000) * 100) / 100;
+  };
+
+  const getLiterConsumption = () => {
+    return Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 100) / 100;
+  };
+
+  const getPriceForTrip = () => {
+    return (
+      Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 7000 * 100) / 100
+    );
+  };
 
   return (
     <div>
@@ -73,10 +96,10 @@ const Map = () => {
           <label for="pertalite">pertalite</label>
         </div>
 
-        <div>Distance: {routeDistance / 1000} KM</div>
-        <div>Liter: {routeDistance / 10000} L</div>
+        <div>Distance: {getDistance()} KM</div>
+        <div>Liter: {getLiterConsumption()} L</div>
 
-        <div>Rp: {(routeDistance / 10000) * 7000} rupiah</div>
+        <div>Rp: {getPriceForTrip()} rupiah</div>
       </div>
     </div>
   );

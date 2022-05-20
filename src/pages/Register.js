@@ -1,38 +1,73 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-// import Navbar from "./Navbar";
-import "../Styles/Register.css";
+// import React, { useContext, useState } from "react";
+// import axios from "axios";
+// // import Navbar from "./Navbar";
+// import "../Styles/Register.css";
+// import { useNavigate } from "react-router-dom";
+// import AuthContext from "../context/AuthContext";
+
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import { toast } from "react-toastify";
+// import { FaUser } from "react-icons/fa";
+import { register, reset } from "../features/auth/authSlice";
+// import Spinner from "../components/Spinner";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordVerify, setPasswordVerify] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
 
-  const { getLoggedIn } = useContext(AuthContext);
+  const { name, email, password, password2 } = formData;
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  async function register(e) {
+  const { user, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const registerData = {
+    if (password !== password2) {
+      toast.error("Passwords do not match");
+    } else {
+      const userData = {
         name,
         email,
         password,
-        passwordVerify,
       };
 
-      await axios.post("http://localhost:5000/user/register", registerData);
-
-      await getLoggedIn();
-      navigate("/", { replace: true });
-    } catch (err) {
-      console.error(err);
+      dispatch(register(userData));
     }
-  }
+  };
+
+  // if (isLoading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <>
@@ -42,16 +77,19 @@ const Register = () => {
             <h1 className="">DAFTAR AKUN</h1>
           </div>
           <div className="SignUpForm">
-            <form onSubmit={register} className="flex flex-col">
+            <form onSubmit={onSubmit} className="flex flex-col">
               <div className="flex flex-row">
                 <label for="name" className="w-1/3">
                   Nama
                 </label>
                 <input
+                  type="text"
                   className="mb-3.5 border border-silver rounded w-2/3 p-1 pl-2"
-                  placeholder="Masukkan Nama Lengkap"
-                  onChange={(e) => setName(e.target.value)}
+                  id="name"
+                  name="name"
                   value={name}
+                  placeholder="Masukkan Nama Lengkap"
+                  onChange={onChange}
                 />
               </div>
               <div className="flex flex-row">
@@ -61,21 +99,13 @@ const Register = () => {
                 <input
                   type="email"
                   className="mb-3.5 border border-silver rounded w-2/3 p-1 pl-2"
-                  placeholder="e.g example@mail.com"
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="email"
+                  name="email"
                   value={email}
+                  placeholder="e.g example@mail.com"
+                  onChange={onChange}
                 ></input>
               </div>
-              {/* <div className="flex flex-row">
-                <label for="telephone" className="w-1/3">
-                  Telepon
-                </label>
-                <input
-                  type="number"
-                  className="mb-3.5 border border-silver rounded w-2/3 p-1 pl-2"
-                  placeholder="+62 8000 0000 000"
-                ></input>
-              </div> */}
               <div className="flex flex-row">
                 <label for="password" className="w-1/3">
                   Sandi
@@ -83,9 +113,11 @@ const Register = () => {
                 <input
                   type="password"
                   className="mb-3.5 border border-silver rounded w-2/3 p-1 pl-2"
-                  placeholder="Masukkan Sandi"
-                  onChange={(e) => setPassword(e.target.value)}
+                  id="password"
+                  name="password"
                   value={password}
+                  placeholder="Masukkan Sandi"
+                  onChange={onChange}
                 ></input>
               </div>
               <div className="flex flex-row">
@@ -96,11 +128,13 @@ const Register = () => {
                   className="mb-3.5 border border-silver rounded w-2/3 p-1 pl-2"
                   type="password"
                   placeholder="Konfirmasi Sandi"
-                  onChange={(e) => setPasswordVerify(e.target.value)}
-                  value={passwordVerify}
+                  id="password2"
+                  name="password2"
+                  onChange={onChange}
+                  value={password2}
                 ></input>
               </div>
-              <div className="grid place-items-center">
+              {/* <div className="grid place-items-center">
                 <div>
                   <input
                     type="checkbox"
@@ -110,7 +144,7 @@ const Register = () => {
                     Ingat Akun Saya
                   </label>
                 </div>
-              </div>
+              </div> */}
               <div className="grid grid-cols-3">
                 <div></div>
                 <button
@@ -119,12 +153,11 @@ const Register = () => {
                 >
                   Daftar
                 </button>
-                <a
-                  href="login"
-                  className=" text-blue text-center p-3 hover:underline"
-                >
-                  Punya Akun?
-                </a>
+                {/* <Link to="/login">
+                  <div className=" text-blue text-center p-3 hover:underline">
+                    Punya Akun?
+                  </div>
+                </Link> */}
               </div>
             </form>
           </div>

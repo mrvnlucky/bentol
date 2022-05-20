@@ -106,7 +106,9 @@ const Article = () => {
             />
           </a>
           <div class="p-5">
-            <a href="#">
+            <a
+            // href="#"
+            >
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-black">
                 Siap-Siap Harga Pertalite & Pertamax Naik, Cek Daftar Harga BBM
                 Pertamina April 2022
@@ -122,7 +124,7 @@ const Article = () => {
               <h1 className="font-bold w-2/3 text-center text-xl ml-2">2</h1>
             </div>
             <a
-              href="#"
+              // href="#"
               className="inline-flex float-right items-center mb-0 py-2 px-3 text-lg font-bold text-center text-black bg-white rounded-lg hover:underline"
             >
               Lihat Artikel
