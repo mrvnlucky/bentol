@@ -1,33 +1,66 @@
-import axios from "axios";
-import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { reset } from "../features/auth/authSlice";
+import { toast } from "react-toastify";
 
 // import LogNavbar from "./LogNavbar";
-import "../Styles/Profile.css";
+import "../styles/Profile.css";
 const Profile = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { id } = useParams();
+  const { user, isError, message } = useSelector((state) => state.auth);
 
-  function getUserIdFromToken() {
-    var decoded = jwtDecode(Cookies.get("token"));
-    return decoded.user;
-  }
-
-  // console.log(tokenId);
   useEffect(() => {
-    getUserById();
-  }, []);
+    if (isError) {
+      toast.error(message);
+    }
 
-  const getUserById = async () => {
-    const userRes = await axios.get(`http://localhost:5000/user/${id}`);
+    dispatch(reset());
+  }, [user, isError, message, navigate, dispatch]);
 
-    setName(userRes.data.name);
-    setEmail(userRes.data.email);
-  };
+  // const onChange = (e) => {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     [e.target.name]: e.target.value,
+  //   }));
+  // };
+
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const userData = {
+  //     email,
+  //     password,
+  //   };
+
+  //   dispatch(login(userData));
+  // };
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+
+  // const { id } = useParams();
+
+  // function getUserIdFromToken() {
+  //   var decoded = jwtDecode(Cookies.get("token"));
+  //   return decoded.user;
+  // }
+
+  // // console.log(tokenId);
+  // useEffect(() => {
+  //   getUserById();
+  // }, []);
+
+  // const getUserById = async () => {
+  //   // const userRes = await axios.get(`http://localhost:5000/user/${id}`);
+  //   const userRes = await axios.get(
+  //     `https://bentol-backend.herokuapp.com/user/${id}`
+  //   );
+
+  //   setName(userRes.data.name);
+  //   setEmail(userRes.data.email);
+  // };
 
   return (
     <>
@@ -41,7 +74,7 @@ const Profile = () => {
                   Nama
                 </label>
                 <span className="w-3/4 text-3xl font-bold text-dark-blue">
-                  {name}
+                  {user && user.name}
                 </span>
               </div>
               <div className="m-3 ml-0 flex flex-row">
@@ -49,14 +82,11 @@ const Profile = () => {
                   E-mail
                 </label>
                 <span className="w-3/4 text-3xl font-bold text-dark-blue">
-                  {email}
+                  {user && user.email}
                 </span>
               </div>
-              <Link to={`/editprofile/${getUserIdFromToken()}`}>
-                <button
-                  // onClick={navigate(`/editprofile/${tokenId}`)}
-                  class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start"
-                >
+              <Link to={"/profile/edit"}>
+                <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
                   Edit
                 </button>
               </Link>
@@ -68,7 +98,7 @@ const Profile = () => {
                   Merk Kendaraan
                 </label>
                 <span className="w-3/4 text-3xl font-bold text-dark-blue">
-                  Honda
+                  {user.vehicle ? user.vehicle.brand : "-"}
                 </span>
               </div>
               <div className="m-3 ml-0 flex flex-row">
@@ -76,7 +106,7 @@ const Profile = () => {
                   Model Kendaraan
                 </label>
                 <span className="w-3/4 text-3xl font-bold text-dark-blue">
-                  Freed
+                  {user.vehicle ? user.vehicle.name : "-"}
                 </span>
               </div>
               <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
