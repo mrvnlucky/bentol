@@ -96,10 +96,19 @@ const Map = () => {
           <label for="pertalite">pertalite</label>
         </div>
 
-        <div>Distance: {getDistance()} KM</div>
-        <div>Liter: {getLiterConsumption()} L</div>
-
-        <div>Rp: {getPriceForTrip()} rupiah</div>
+        {user ? (
+          <div>
+            <div>Distance: {getDistance()} KM</div>
+            <div>Liter: {getLiterConsumption()} L</div>
+            <div>Rp: {getPriceForTrip()} rupiah</div>
+          </div>
+        ) : (
+          <div>
+            <div>Distance: {getDistance()} KM</div>
+            <div>Liter: {getLiterConsumption()} L</div>
+            <div>Rp: {getPriceForTrip()} rupiah</div>
+          </div>
+        )}
       </div>
     </div>
   );
