@@ -75,7 +75,7 @@ const Map = () => {
   };
 
   const getLiterConsumption = () => {
-    if (!user) {
+    if (!user.vehicle) {
       return Math.round((routeDistance / 1000 / 10) * 100) / 100;
     } else {
       return Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 100) / 100;
@@ -83,7 +83,7 @@ const Map = () => {
   };
 
   const getPriceForTrip = () => {
-    if (!user) {
+    if (!user.vehicle) {
       return Math.round((routeDistance / 1000 / 10) * 7000 * 100) / 100;
     } else {
       return (
