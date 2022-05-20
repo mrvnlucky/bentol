@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/v1/vehicles/";
+// const API_URL = "http://localhost:5000/api/v1/vehicles/";
+const API_URL = "https://bentol-backend.herokuapp.com/api/v1/vehicles/";
 
 // Create new vehicle
 const createVehicle = async (vehicleData) => {
