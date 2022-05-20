@@ -122,39 +122,40 @@ const EditProfile = () => {
   return (
     <>
       <body className="body-bg min-h-screen md:px-0 align-middle grid font-nunito tracking-wide">
-        <div className="m-6 border rounded-xl">
+        <div className="mt-24 mb-auto mx-24 rounded-xl shadow-2xl">
           <div className="flex flex-col">
             <form onSubmit={onSubmit}>
+
               <div className="m-8">
-                <h1 className="font-bold text-4xl underline">PROFIL</h1>
+                <h1 className="font-bold text-3xl">PROFIL</h1>
                 <div className="m-3 ml-0 flex flex-row">
-                  <label for="name" className="text-3xl font-bold w-1/3">
+                  <label for="name" className="text-2xl font-bold w-1/4">
                     Nama
                   </label>
                   <input
                     type="name"
-                    className="mb-3.5 border border-silver rounded w-1/3 p-1 pl-2"
+                    className="mb-3.5 border border-silver rounded w-1/4 p-1 pl-2 text-xl"
                     name="name"
                     id="name"
                     value={name}
                     onChange={onChange}
                   ></input>
-                  <div className="w-2/3"></div>
+                  {/* <div className="w-2/3"></div> */}
                 </div>
                 <div className="m-3 ml-0 flex flex-row">
-                  <label for="email" className="text-3xl font-bold w-1/3">
+                  <label for="email" className="text-2xl font-bold w-1/4">
                     E-mail
                   </label>
                   <input
                     type="email"
-                    className="mb-3.5 border border-silver rounded w-1/3 p-1 pl-2"
+                    className="mb-3.5 border border-silver rounded w-1/4 p-1 pl-2 text-xl"
                     // placeholder="Masukkan Alamat E-mail"
                     value={email}
                     name="email"
                     id="email"
                     onChange={onChange}
                   ></input>
-                  <div className="w-2/3"></div>
+                  {/* <div className="w-2/3"></div> */}
                 </div>
                 <button
                   type="submit"
@@ -163,52 +164,41 @@ const EditProfile = () => {
                   Simpan
                 </button>
               </div>
+
               <div className="m-8">
-                <h1 className="font-bold text-4xl underline">INFO KENDARAAN</h1>
+                <h1 className="font-bold text-3xl">INFO KENDARAAN</h1>
                 <div className="m-3 ml-0 flex flex-row">
-                  <label for="merek" className="text-3xl font-bold w-1/4">
+                  <label for="merek" className="text-2xl font-bold w-1/4">
                     Merk Kendaraan
                   </label>
+                  <span className="mb-3.5 w-1/4 text-2xl font-bold text-dark-blue"></span>
                 </div>
-              </div>
-              <div className="m-3 ml-0 flex flex-row">
-                <label for="model" className="text-3xl font-bold w-1/4">
-                  Model Kendaraan
-                </label>
-                <div class="mb-3 xl:w-96">
-                  <select
-                    onChange={onChange}
-                    name="vehicle"
-                    id="vehicle"
-                    class="form-select 
-                  appearance-none 
-                  block w-full
-                  px-3
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding bg-no-repeat
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    aria-label="Default select example"
-                  >
-                    <option value={vehicle}> Pilih mobil anda</option>
-                    {vehicles.map((vehicle) => (
-                      <option key={vehicle.id} value={vehicle._id}>
-                        {vehicle.brand + " " + vehicle.name}
-                      </option>
-                    ))}
-                  </select>
+
+                <div className="m-3 ml-0 flex flex-row">
+                  <label for="model" className="text-2xl font-bold w-1/4">
+                    Model Kendaraan
+                  </label>
+                  <div class="mb-3.5 w-1/3 xl:w-96">
+                    <select
+                      onChange={onChange}
+                      name="vehicle"
+                      id="vehicle"
+                      class="form-select appearance-none block w-full p-1 pl-2 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      aria-label="Default select example"
+                    >
+                      <option value={vehicle}> Pilih mobil anda</option>
+                      {vehicles.map((vehicle) => (
+                        <option key={vehicle.id} value={vehicle._id}>
+                          {vehicle.brand + " " + vehicle.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
+                <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
+                  Simpan
+                </button>
               </div>
-              <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
-                Simpan
-              </button>
             </form>
           </div>
         </div>

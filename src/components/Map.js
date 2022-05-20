@@ -105,10 +105,27 @@ const Map = () => {
           <label for="pertalite">pertalite</label>
         </div> */}
 
-        <div>
-          <div>Distance: {getDistance()} KM</div>
-          <div>Liter: {getLiterConsumption()} L</div>
-          <div>Rp: {getPriceForTrip()} rupiah</div>
+        <div className="mb-4">
+          <h2 className="mt-7 mb-4 mx-9 text-center">CEK KEBUTUHAN BENSIN<br />UNTUK TRIP KAMU</h2>
+          <hr className="mb-4" />
+          <div className="flex flex-row mx-3 mb-2">
+            <span className="basis-1/2">Distance</span>
+            <span className="basis-1/4 text-center">:</span>
+            <span className="basis-1/2 text-center">{getDistance()}</span>
+            <span className="basis-1/4 text-center">KM</span>
+          </div>
+          <div className="flex flex-row mx-3 mb-2">
+            <span className="basis-1/2">Liter</span>
+            <span className="basis-1/4 text-center">:</span>
+            <span className="basis-1/2 text-center">{getLiterConsumption()}</span>
+            <span className="basis-1/4 text-center">L</span>
+          </div>
+          <div className="flex flex-row mx-3 mb-2">
+            <span className="basis-1/2">Harga</span>
+            <span className="basis-1/4 text-center">:</span>
+            <span className="basis-1/2 text-center">{getPriceForTrip()}</span>
+            <span className="basis-1/4 text-center">Rp</span>
+          </div>
         </div>
       </div>
     </div>

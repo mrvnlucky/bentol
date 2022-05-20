@@ -1,7 +1,7 @@
 // import React, { useContext, useState } from "react";
 // import axios from "axios";
 // // import Navbar from "./Navbar";
-// import "../Styles/Register.css";
+import "../styles/Register.css";
 // import { useNavigate } from "react-router-dom";
 // import AuthContext from "../context/AuthContext";
 
