@@ -97,13 +97,13 @@ const Map = () => {
     <div>
       <div className="map-container" ref={mapContainerRef} />
       <div className="sidebarStyle">
-        <div>
+        {/* <div>
           <input type="radio" value="pertamax" id="pertamax" name="gasType" />
           <label for="pertamax">pertamax</label>
 
           <input type="radio" value="pertalite" id="pertalite" name="gasType" />
           <label for="pertalite">pertalite</label>
-        </div>
+        </div> */}
 
         <div>
           <div>Distance: {getDistance()} KM</div>
