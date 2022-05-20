@@ -5,7 +5,7 @@ const Dashboard = () => {
     return (
         <><Navbar />
             <>< Carousel />
-                Map dibawah
+
             </>
         </>
     )
