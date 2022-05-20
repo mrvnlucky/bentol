@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav class="bg-blue px-2 sm:px-4 py-2.5 font-nunito tracking-wide sticky top-0">
+    <nav class="bg-blue px-2 sm:px-4 py-2.5 font-nunito tracking-wide sticky top-0 shadow-lg">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/">
           <div class="flex items-center">
@@ -42,18 +42,21 @@ const Navbar = () => {
           <div className="flex">
             <Link to="/profile">
               <div class="flex">
-                <span class="self-center ml-2 text-sm whitespace-nowrap text-white">
-                  <FaUserAlt />
-                  PROFIL
+                <span class="flex self-center text-sm whitespace-nowrap text-white">
+                  <span className="self-center"><FaUserAlt /></span>
+                  <span className="ml-2">
+                    PROFIL
+                  </span>
                 </span>
               </div>
             </Link>
             <div class="ml-12 flex">
               <button
                 onClick={onLogout}
-                class="self-center ml-2 text-sm whitespace-nowrap text-white"
+                class="flex self-center ml-2 text-sm whitespace-nowrap text-white"
               >
-                <FaSignOutAlt /> KELUAR
+                <span className="self-center"><FaSignOutAlt /></span>
+                <span className="ml-2">KELUAR</span>
               </button>
             </div>
           </div>

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .SignUpForm {
-    @apply border-silver border bg-white max-w-lg mx-auto p-5 rounded-md;
+    @apply shadow-md bg-white max-w-lg mx-auto p-5 rounded-md;
 }

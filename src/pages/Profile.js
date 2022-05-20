@@ -65,23 +65,24 @@ const Profile = () => {
   return (
     <>
       <body className="body-bg min-h-screen md:px-0 align-middle grid font-nunito tracking-wide">
-        <div className="m-6 border rounded-xl">
+        <div className="mt-24 mb-auto mx-24 rounded-xl shadow-2xl">
           <div className="flex flex-col">
+
             <div className="m-8">
-              <h1 className="font-bold text-4xl underline">PROFIL</h1>
+              <h1 className="font-bold text-3xl">PROFIL</h1>
               <div className="m-3 ml-0 flex flex-row">
-                <label for="name" className="text-3xl font-bold w-1/4">
+                <label for="name" className="text-2xl font-bold w-1/4">
                   Nama
                 </label>
-                <span className="w-3/4 text-3xl font-bold text-dark-blue">
+                <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
                   {user && user.name}
                 </span>
               </div>
               <div className="m-3 ml-0 flex flex-row">
-                <label for="email" className="text-3xl font-bold w-1/4">
+                <label for="email" className="text-2xl font-bold w-1/4">
                   E-mail
                 </label>
-                <span className="w-3/4 text-3xl font-bold text-dark-blue">
+                <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
                   {user && user.email}
                 </span>
               </div>
@@ -91,21 +92,22 @@ const Profile = () => {
                 </button>
               </Link>
             </div>
+
             <div className="m-8">
-              <h1 className="font-bold text-4xl underline">INFO KENDARAAN</h1>
+              <h1 className="font-bold text-3xl">INFO KENDARAAN</h1>
               <div className="m-3 ml-0 flex flex-row">
-                <label for="merek" className="text-3xl font-bold w-1/4">
+                <label for="merek" className="mb-3.5 text-2xl font-bold w-1/4">
                   Merk Kendaraan
                 </label>
-                <span className="w-3/4 text-3xl font-bold text-dark-blue">
+                <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
                   {user.vehicle ? user.vehicle.brand : "-"}
                 </span>
               </div>
               <div className="m-3 ml-0 flex flex-row">
-                <label for="model" className="text-3xl font-bold w-1/4">
+                <label for="model" className="mb-3.5 text-2xl font-bold w-1/4">
                   Model Kendaraan
                 </label>
-                <span className="w-3/4 text-3xl font-bold text-dark-blue">
+                <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
                   {user.vehicle ? user.vehicle.name : "-"}
                 </span>
               </div>

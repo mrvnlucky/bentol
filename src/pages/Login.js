@@ -1,13 +1,13 @@
 // import React, { useState, useContext } from "react";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";
-// import "../Styles/Login.css";
+import "../styles/Login.css";
 // import AuthContext from "../context/AuthContext.js";
 
 import { useState, useEffect } from "react";
 // import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 // import Spinner from "../components/Spinner";
@@ -117,9 +117,11 @@ const Login = () => {
                 >
                   Masuk
                 </button>
-                <div className=" text-blue text-center p-3 hover:underline">
-                  Lupa Sandi?
-                </div>
+                <Link to="/register">
+                  <div className="text-sm text-blue text-center p-3 hover:underline">
+                    Belum punya akun?
+                  </div>
+                </Link>
               </div>
             </form>
           </div>

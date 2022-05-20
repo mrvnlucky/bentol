@@ -7,13 +7,13 @@
 }
 
 .sidebarStyle {
+  @apply bg-white max-w-lg mx-auto p-5 rounded-xl shadow-md font-nunito;
   display: inline-block;
   position: absolute;
   top: 13em;
   left: 0;
   margin: 12px;
-  background-color: #404040;
-  color: #ffffff;
+  color: black;
   z-index: 1 !important;
   padding: 10px;
   font-weight: bold;
