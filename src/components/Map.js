@@ -89,7 +89,7 @@ const Map = () => {
   };
 
   const getPriceForTrip = () => {
-    if (!user.vehicle) {
+    if (!user) {
       return Math.round((routeDistance / 1000 / 10) * 7000 * 100) / 100;
     } else {
       if (user.vehicle) {
