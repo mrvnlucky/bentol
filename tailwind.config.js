@@ -17,7 +17,8 @@ module.exports = {
       'dark-blue': '#26408B',
       'white': '#ffffff',
       'blue': '#0075FF',
-      'black': '#0D0221'
+      'black': '#0D0221',
+      'red': '#E53B3B'
     },
     fontFamily: {
       'nunito': ['nunito', 'sans-serif'],
