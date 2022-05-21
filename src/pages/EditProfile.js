@@ -187,14 +187,20 @@ const EditProfile = () => {
                       aria-label="Default select example"
                     >
                       {user.vehicle ? (
-                        <option selected value={user.vehicle._id}>
-                          Pilih Kendaraan
-                          {/* {user.vehicle.brand + " " + user.vehicle.name} */}
-                        </option>
+                        <>
+                          <option value={user.vehicle._id}>
+                            {/* Pilih Kendaraan */}
+                            {user.vehicle.brand + " " + user.vehicle.name}
+                          </option>
+                          <option disabled>----------------</option>
+                        </>
                       ) : (
-                        <option selected disabled>
-                          Pilih Kendaraan
-                        </option>
+                        <>
+                          <option selected disabled>
+                            Pilih Kendaraan
+                          </option>
+                          <option disabled>----------------</option>
+                        </>
                       )}
                       {vehicles.map((vehicle) => (
                         <option key={vehicle._id} value={vehicle._id}>
