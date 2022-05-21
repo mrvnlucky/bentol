@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/v1/users/";
-const API_URL = "https://bentol-backend.herokuapp.com/api/v1/users/";
+const API_URL = "http://localhost:5000/api/v1/users/";
+// const API_URL = "https://bentol-backend.herokuapp.com/api/v1/users/";
 
 // Register user
 const register = async (userData) => {
@@ -38,9 +38,38 @@ const editProfile = async (userData, token) => {
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
-
   return response.data;
 };
+
+// const GetProfile = async (token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   };
+//   const response = await axios.get(API_URL + "me", config);
+//   if (response.data) {
+//     localStorage.setItem("user", JSON.stringify(response.data));
+//   }
+//   return response.data;
+// };
+
+// // Get Profile
+// const getProfile = async (token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   };
+
+//   const response = await axios.get(API_URL + "me", config);
+
+//   if (response.data) {
+//     localStorage.setItem("user", JSON.stringify(response.data));
+//   }
+
+//   return response.data;
+// };
 
 // Logout user
 const logout = () => {
@@ -52,6 +81,7 @@ const authService = {
   logout,
   login,
   editProfile,
+  // getProfile,
 };
 
 export default authService;

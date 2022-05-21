@@ -9,6 +9,8 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "bson": "^4.6.4",
+    "bson-objectid": "^2.0.3",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "mapbox-gl": "^2.8.2",

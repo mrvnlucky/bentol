@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { reset, editProfile } from "../features/auth/authSlice";
+import { reset, editProfile, getProfile } from "../features/auth/authSlice";
 import { getVehicles } from "../features/vehicle/vehicleSlice";
-
+import ObjectID from "bson-objectid";
 // import LogNavbar from "./LogNavbar";
 import "../styles/EditProfile.css";
 
@@ -56,7 +56,6 @@ const EditProfile = () => {
       vehicle,
     };
     dispatch(editProfile(userData));
-
     dispatch(reset());
     navigate("/profile", { replace: true });
   };
@@ -125,7 +124,6 @@ const EditProfile = () => {
         <div className="mt-24 mb-auto mx-24 rounded-xl shadow-2xl">
           <div className="flex flex-col">
             <form onSubmit={onSubmit}>
-
               <div className="m-8">
                 <h1 className="font-bold text-3xl">PROFIL</h1>
                 <div className="m-3 ml-0 flex flex-row">
@@ -167,12 +165,12 @@ const EditProfile = () => {
 
               <div className="m-8">
                 <h1 className="font-bold text-3xl">INFO KENDARAAN</h1>
-                <div className="m-3 ml-0 flex flex-row">
+                {/* <div className="m-3 ml-0 flex flex-row">
                   <label for="merek" className="text-2xl font-bold w-1/4">
                     Merk Kendaraan
                   </label>
                   <span className="mb-3.5 w-1/4 text-2xl font-bold text-dark-blue"></span>
-                </div>
+                </div> */}
 
                 <div className="m-3 ml-0 flex flex-row">
                   <label for="model" className="text-2xl font-bold w-1/4">
@@ -183,19 +181,26 @@ const EditProfile = () => {
                       onChange={onChange}
                       name="vehicle"
                       id="vehicle"
+                      value={vehicle}
+                      // placeholder={user.vehicle.brand + " " + user.vehicle.name}
                       class="form-select appearance-none block w-full p-1 pl-2 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       aria-label="Default select example"
                     >
-                      <option value={vehicle}> Pilih mobil anda</option>
+                      <option disabled value={user.vehicle._id}>
+                        {user.vehicle.brand + " " + user.vehicle.name}
+                      </option>
                       {vehicles.map((vehicle) => (
-                        <option key={vehicle.id} value={vehicle._id}>
+                        <option key={vehicle._id} value={vehicle._id}>
                           {vehicle.brand + " " + vehicle.name}
                         </option>
                       ))}
                     </select>
                   </div>
                 </div>
-                <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
+                <button
+                  type="submit"
+                  class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start"
+                >
                   Simpan
                 </button>
               </div>

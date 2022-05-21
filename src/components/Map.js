@@ -4,6 +4,7 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import "../styles/Map.css";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../features/auth/authSlice";
+import { getGas } from "../features/gas/gasSlice";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoibWFydmluMTkwMDEiLCJhIjoiY2wyZWNoaDh3MTZ1bTNqbGFlb2VtdjkzdyJ9.xv0Q840ksCmbWY7HX_l2sQ";
@@ -19,6 +20,14 @@ const Map = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
+  const { gas } = useSelector((state) => state.gas);
+
+  const [formData, setFormData] = useState({
+    // gasName: gas.name,
+    gasPrice: gas.price,
+  });
+
+  const { gasPrice } = formData;
 
   // Initialize map when component mounts
   useEffect(() => {
@@ -63,12 +72,20 @@ const Map = () => {
       setRouteDistance(rDistance);
     });
 
+    dispatch(getGas());
     // Clean up on unmount
     return () => {
       map.remove();
       dispatch(reset());
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const getDistance = () => {
     return Math.round((routeDistance / 1000) * 100) / 100;
@@ -89,16 +106,20 @@ const Map = () => {
   };
 
   const getPriceForTrip = () => {
+    if (!gasPrice) {
+      return "0";
+    }
     if (!user) {
-      return Math.round((routeDistance / 1000 / 10) * 7000 * 100) / 100;
+      return Math.round((routeDistance / 1000 / 10) * gasPrice * 100) / 100;
     } else {
       if (user.vehicle) {
         return (
-          Math.round((routeDistance / 1000 / user.vehicle.kmpl) * 7000 * 100) /
-          100
+          Math.round(
+            (routeDistance / 1000 / user.vehicle.kmpl) * gasPrice * 100
+          ) / 100
         );
       } else {
-        return Math.round((routeDistance / 1000 / 10) * 7000 * 100) / 100;
+        return Math.round((routeDistance / 1000 / 10) * gasPrice * 100) / 100;
       }
     }
   };
@@ -114,9 +135,30 @@ const Map = () => {
           <input type="radio" value="pertalite" id="pertalite" name="gasType" />
           <label for="pertalite">pertalite</label>
         </div> */}
-
+        <div class="mb-3.5 w-full ">
+          <div>Pilih BBM anda</div>
+          <select
+            onChange={onChange}
+            name="gasPrice"
+            id="gasPrice"
+            value={gasPrice}
+            class="form-select appearance-none block w-full p-1 pl-2 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            aria-label="Default select example"
+          >
+            <option disabled>Pilih jenis BBM anda</option>
+            {gas.map((gas) => (
+              <option key={gas.id} value={gas.price}>
+                {gas.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="mb-4">
-          <h2 className="mt-7 mb-4 mx-9 text-center">CEK KEBUTUHAN BENSIN<br />UNTUK TRIP KAMU</h2>
+          <h2 className="mt-7 mb-4 mx-9 text-center">
+            CEK KEBUTUHAN BENSIN
+            <br />
+            UNTUK TRIP KAMU
+          </h2>
           <hr className="mb-4" />
           <div className="flex flex-row mx-3 mb-2">
             <span className="basis-1/2">Distance</span>
@@ -127,7 +169,9 @@ const Map = () => {
           <div className="flex flex-row mx-3 mb-2">
             <span className="basis-1/2">Liter</span>
             <span className="basis-1/4 text-center">:</span>
-            <span className="basis-1/2 text-center">{getLiterConsumption()}</span>
+            <span className="basis-1/2 text-center">
+              {getLiterConsumption()}
+            </span>
             <span className="basis-1/4 text-center">L</span>
           </div>
           <div className="flex flex-row mx-3 mb-2">

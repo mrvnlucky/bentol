@@ -67,6 +67,25 @@ export const editProfile = createAsyncThunk(
   }
 );
 
+// // getProfile
+// export const getProfile = createAsyncThunk(
+//   "auth/getprofile",
+//   async (_, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.user.token;
+//       return await authService.getProfile(token);
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -125,6 +144,20 @@ export const authSlice = createSlice({
         state.message = action.payload;
         state.user = null;
       });
+    // .addCase(getProfile.pending, (state) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(getProfile.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isSuccess = true;
+    //   state.user = action.payload;
+    // })
+    // .addCase(getProfile.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isError = true;
+    //   state.message = action.payload;
+    //   state.user = null;
+    // });
   },
 });
 

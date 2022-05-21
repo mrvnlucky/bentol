@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { reset } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
-
+import ObjectID from "bson-objectid";
 // import LogNavbar from "./LogNavbar";
 import "../styles/Profile.css";
+
 const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { user, isError, message } = useSelector((state) => state.auth);
+
+  // const { vehicle } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isError) {
@@ -67,7 +70,6 @@ const Profile = () => {
       <body className="body-bg min-h-screen md:px-0 align-middle grid font-nunito tracking-wide">
         <div className="mt-24 mb-auto mx-24 rounded-xl shadow-2xl">
           <div className="flex flex-col">
-
             <div className="m-8">
               <h1 className="font-bold text-3xl">PROFIL</h1>
               <div className="m-3 ml-0 flex flex-row">
@@ -95,20 +97,22 @@ const Profile = () => {
 
             <div className="m-8">
               <h1 className="font-bold text-3xl">INFO KENDARAAN</h1>
-              <div className="m-3 ml-0 flex flex-row">
+              {/* <div className="m-3 ml-0 flex flex-row">
                 <label for="merek" className="mb-3.5 text-2xl font-bold w-1/4">
                   Merk Kendaraan
                 </label>
                 <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
                   {user.vehicle ? user.vehicle.brand : "-"}
                 </span>
-              </div>
+              </div> */}
               <div className="m-3 ml-0 flex flex-row">
                 <label for="model" className="mb-3.5 text-2xl font-bold w-1/4">
                   Model Kendaraan
                 </label>
                 <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
-                  {user.vehicle ? user.vehicle.name : "-"}
+                  {user.vehicle
+                    ? user.vehicle.brand + " " + user.vehicle.name
+                    : "-"}
                 </span>
               </div>
               <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
