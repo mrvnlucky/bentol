@@ -115,9 +115,21 @@ const Profile = () => {
                     : "-"}
                 </span>
               </div>
-              <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
-                Edit
-              </button>
+              <div className="m-3 ml-0 flex flex-row">
+                <label for="model" className="mb-3.5 text-2xl font-bold w-1/4">
+                  Konsumsi BBM
+                </label>
+                <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
+                  {user.vehicle
+                    ? user.vehicle.kmpl + " KM/L"
+                    : "-"}
+                </span>
+              </div>
+              <Link to="/profile/edit">
+                <button class="m-3 ml-0 h-9 px-10 bg-blue hover:bg-black rounded-lg text-white place-item-start">
+                  Edit
+                </button>
+              </Link>
             </div>
           </div>
         </div>

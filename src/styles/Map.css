@@ -1,6 +1,6 @@
 .map-container {
   position: absolute;
-  top: 10em;
+  top: 6em;
   bottom: 0;
   left: 0;
   right: 0;
@@ -10,7 +10,7 @@
   @apply bg-white max-w-lg mx-auto p-5 rounded-xl shadow-md font-nunito;
   display: inline-block;
   position: absolute;
-  top: 13em;
+  top: 10em;
   left: 0;
   margin: 12px;
   color: black;

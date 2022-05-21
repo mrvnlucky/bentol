@@ -39,30 +39,30 @@ export default function Carousel() {
   };
 
   return (
-    <div className="w-10/12 select-none relative m-auto mt-8 rounded-lg border border-white shadow-lg">
+    <div className="w-1/3 bg-white z-10 select-none relative m-auto mt-2 rounded-lg border border-white shadow-lg">
       <div className="flex flex-row ml-10 mr-10">
         <div className="w-1/3">
           <img src={`${featuredFuel[currentIndex]}`}></img>
-          <h1 className="text-right mr-10 text-2xl font-extrabold text-red mb-3">
+          <h1 className="text-right mr-10 text-lg font-extrabold text-red mb-3">
             {harga[currentIndex]}
           </h1>
         </div>
         <div className="w-1/3">
           <img src={`${featuredFuel[currentIndex + 1]}`}></img>
-          <h1 className="text-right mr-10 text-2xl font-extrabold text-red mb-3">
+          <h1 className="text-right mr-10 text-lg font-extrabold text-red mb-3">
             {harga[currentIndex + 1]}
           </h1>
         </div>
         <div className="w-1/3">
           <img src={`${featuredFuel[currentIndex + 2]}`}></img>
-          <h1 className="text-right mr-10 text-2xl font-extrabold text-red mb-3">
+          <h1 className="text-right mr-10 text-lg font-extrabold text-red mb-3">
             {harga[currentIndex + 2]}
           </h1>
         </div>
       </div>
       <div className="absolute w-full top-1/2 transform -translate-y-1/2 px-2 flex justify-between items-center">
         <button
-          className="bg-silver rounded-full w-12"
+          className="bg-silver rounded-full w-8"
           onClick={handleOnPreviousClick}
         >
           <svg
@@ -75,7 +75,7 @@ export default function Carousel() {
           </svg>
         </button>
         <button
-          className="bg-silver rounded-full w-12"
+          className="bg-silver rounded-full w-8"
           onClick={handleOnNextClick}
         >
           <svg
