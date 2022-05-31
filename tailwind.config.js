@@ -10,7 +10,12 @@ module.exports = {
       'dark-blue': '#26408B',
       'crystal': '#A6CFD5',
       'dark-crystal': '#95BABF',
-      'silver': '#C4C4C4'
+      'silver': '#C4C4C4',
+      'slate': '#334155',
+      'dark-slate': '#1e293b',
+      'red': '#dc2626',
+      'dark-red': '#b91c1c',
+      'gray': '#d1d5db',
     },
     textColor: {
       'dark': '#828282',
