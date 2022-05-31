@@ -61,9 +61,9 @@ export const deleteGas = createAsyncThunk(
 // Update gas
 export const updateGas = createAsyncThunk(
   "gas/update",
-  async (id, thunkAPI) => {
+  async ({ id, gasData }, thunkAPI) => {
     try {
-      return await gasService.updateGas(id);
+      return await gasService.updateGas(id, gasData);
     } catch (error) {
       const message =
         (error.response &&

@@ -32,9 +32,10 @@ const EditProfile = () => {
       toast.error(message);
     }
 
-    dispatch(getVehicles());
     if (isSuccess) {
+      return;
     }
+    dispatch(getVehicles());
 
     return () => {
       dispatch(reset());

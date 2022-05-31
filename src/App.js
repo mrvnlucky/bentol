@@ -27,6 +27,9 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Navbar from "./components/Navbar.js";
 import "./styles/App.css";
+import VehicleList from "./pages/admin/vehicle-crud/VehicleList.js";
+import VehicleCreateForm from "./pages/admin/vehicle-crud/VehicleCreateForm.js";
+import VehicleEditForm from "./pages/admin/vehicle-crud/VehicleEditForm.js";
 
 // import axios from "axios";
 
@@ -42,6 +45,17 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile />} />
+
+          <Route path="/admin/vehicles" element={<VehicleList />} />
+          <Route
+            path="/admin/vehicles/create"
+            element={<VehicleCreateForm />}
+          />
+          <Route
+            path="/admin/vehicles/edit/:id"
+            element={<VehicleEditForm />}
+          />
+
           {/* <Route path="/article" element={<Article />} /> */}
           {/* <Route path="/articledetails" element={<ArticleDetails />} /> */}
         </Routes>

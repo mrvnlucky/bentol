@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/v1/gas/";
-const API_URL = "https://bentol-backend.herokuapp.com/api/v1/gas/";
+const API_URL = "http://localhost:5000/api/v1/gas/";
+// const API_URL = "https://bentol-backend.herokuapp.com/api/v1/gas/";
 
 // Create new gas
 const createGas = async (gasData) => {
@@ -18,8 +18,8 @@ const getGas = async () => {
 };
 
 // Update gas
-const updateGas = async (gasId) => {
-  const response = await axios.put(API_URL + gasId);
+const updateGas = async (gasId, gasData) => {
+  const response = await axios.put(API_URL + gasId, gasData);
 
   return response.data;
 };

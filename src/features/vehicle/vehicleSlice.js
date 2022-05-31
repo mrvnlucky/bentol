@@ -45,6 +45,24 @@ export const getVehicles = createAsyncThunk(
   }
 );
 
+// Get vehicles
+export const getVehicleById = createAsyncThunk(
+  "vehicles/getById",
+  async (id, thunkAPI) => {
+    try {
+      return await vehicleService.getVehicleById(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete vehicle
 export const deleteVehicle = createAsyncThunk(
   "vehicles/delete",
@@ -66,9 +84,9 @@ export const deleteVehicle = createAsyncThunk(
 // Update vehicle
 export const updateVehicle = createAsyncThunk(
   "vehicles/update",
-  async (id, thunkAPI) => {
+  async ({ id, vehicleData }, thunkAPI) => {
     try {
-      return await vehicleService.updateVehicle(id);
+      return await vehicleService.updateVehicle(id, vehicleData);
     } catch (error) {
       const message =
         (error.response &&
@@ -112,6 +130,19 @@ export const vehicleSlice = createSlice({
         state.vehicles = action.payload;
       })
       .addCase(getVehicles.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getVehicleById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getVehicleById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.vehicles = action.payload;
+      })
+      .addCase(getVehicleById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
