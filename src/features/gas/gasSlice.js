@@ -14,7 +14,8 @@ export const createGas = createAsyncThunk(
   "gas/create",
   async (gasData, thunkAPI) => {
     try {
-      return await gasService.createGas(gasData);
+      const token = thunkAPI.getState().admin.admin.token;
+      return await gasService.createGas(gasData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -40,12 +41,31 @@ export const getGas = createAsyncThunk("gas/getAll", async (_, thunkAPI) => {
   }
 });
 
+// Get gas by id
+export const getGasById = createAsyncThunk(
+  "gas/getById",
+  async (id, thunkAPI) => {
+    try {
+      return await gasService.getGasById(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Delete vehicle
 export const deleteGas = createAsyncThunk(
   "gas/delete",
   async (id, thunkAPI) => {
     try {
-      return await gasService.deleteGas(id);
+      const token = thunkAPI.getState().admin.admin.token;
+      return await gasService.deleteGas(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -63,7 +83,8 @@ export const updateGas = createAsyncThunk(
   "gas/update",
   async ({ id, gasData }, thunkAPI) => {
     try {
-      return await gasService.updateGas(id, gasData);
+      const token = thunkAPI.getState().admin.admin.token;
+      return await gasService.updateGas(id, gasData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -107,6 +128,19 @@ export const gasSlice = createSlice({
         state.gas = action.payload;
       })
       .addCase(getGas.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getGasById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getGasById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.vehicles = action.payload;
+      })
+      .addCase(getGasById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

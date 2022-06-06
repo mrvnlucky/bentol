@@ -14,7 +14,8 @@ export const createVehicle = createAsyncThunk(
   "vehicles/create",
   async (vehicleData, thunkAPI) => {
     try {
-      return await vehicleService.createVehicle(vehicleData);
+      const token = thunkAPI.getState().admin.admin.token;
+      return await vehicleService.createVehicle(vehicleData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -45,7 +46,7 @@ export const getVehicles = createAsyncThunk(
   }
 );
 
-// Get vehicles
+// Get vehicle by id
 export const getVehicleById = createAsyncThunk(
   "vehicles/getById",
   async (id, thunkAPI) => {
@@ -68,7 +69,8 @@ export const deleteVehicle = createAsyncThunk(
   "vehicles/delete",
   async (id, thunkAPI) => {
     try {
-      return await vehicleService.deleteVehicle(id);
+      const token = thunkAPI.getState().admin.admin.token;
+      return await vehicleService.deleteVehicle(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -86,7 +88,8 @@ export const updateVehicle = createAsyncThunk(
   "vehicles/update",
   async ({ id, vehicleData }, thunkAPI) => {
     try {
-      return await vehicleService.updateVehicle(id, vehicleData);
+      const token = thunkAPI.getState().admin.admin.token;
+      return await vehicleService.updateVehicle(id, vehicleData, token);
     } catch (error) {
       const message =
         (error.response &&

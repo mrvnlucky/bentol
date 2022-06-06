@@ -29,7 +29,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message, { position: toast.POSITION.BOTTOM_LEFT });
     }
 
     if (isSuccess) {

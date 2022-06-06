@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/v1/users/";
-// const API_URL = "https://bentol-backend.herokuapp.com/api/v1/users/";
+// const API_URL = "http://localhost:5000/api/v1/users/";
+const API_URL = "https://bentol-backend.herokuapp.com/api/v1/users/";
 
 // Register user
 const register = async (userData) => {

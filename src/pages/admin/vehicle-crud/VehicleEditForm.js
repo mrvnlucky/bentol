@@ -6,7 +6,6 @@ import {
   updateVehicle,
   reset,
   getVehicleById,
-  deleteVehicle,
 } from "../../../features/vehicle/vehicleSlice";
 
 const VehicleEditForm = () => {
@@ -66,7 +65,10 @@ const VehicleEditForm = () => {
             <div className="px-4 py-5 bg-white sm:p-6">
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6">
-                  <label for="name" className="block text-xl font-medium text-gray">
+                  <label
+                    for="name"
+                    className="block text-xl font-medium text-gray"
+                  >
                     Nama Kendaraan
                   </label>
                   <input
@@ -81,7 +83,10 @@ const VehicleEditForm = () => {
                 </div>
 
                 <div className="col-span-6">
-                  <label for="brand" className="block text-xl font-medium text-gray">
+                  <label
+                    for="brand"
+                    className="block text-xl font-medium text-gray"
+                  >
                     Merk Kendaraan
                   </label>
                   <input
@@ -96,7 +101,10 @@ const VehicleEditForm = () => {
                 </div>
 
                 <div className="col-span-6">
-                  <label for="kmpl" className="block text-xl font-medium text-gray">
+                  <label
+                    for="kmpl"
+                    className="block text-xl font-medium text-gray"
+                  >
                     Konsumsi Bensin
                   </label>
                   <input
@@ -105,12 +113,16 @@ const VehicleEditForm = () => {
                     name="kmpl"
                     value={kmpl}
                     placeholder="Masukkan kmpl kendaraan"
-                    onChange={onChange} className="border-silver rounded shadow-sm xl:text-xl w-full p-1 pl-2"
+                    onChange={onChange}
+                    className="border-silver rounded shadow-sm xl:text-xl w-full p-1 pl-2"
                   />
                 </div>
 
                 <div className="col-span-6">
-                  <button type="submit" className="py-2 px-4  bg-slate hover:bg-dark-slate text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full">
+                  <button
+                    type="submit"
+                    className="py-2 px-4  bg-slate hover:bg-dark-slate text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
+                  >
                     Edit kendaraan
                   </button>
                 </div>

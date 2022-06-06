@@ -12,9 +12,6 @@ mapboxgl.accessToken =
 const Map = () => {
   const mapContainerRef = useRef(null);
 
-  // const [lng, setLng] = useState(5);
-  // const [lat, setLat] = useState(34);
-  // const [zoom, setZoom] = useState(1.5);
   const [routeDistance, setRouteDistance] = useState("");
 
   const dispatch = useDispatch();
@@ -145,7 +142,9 @@ const Map = () => {
             class="form-select appearance-none block w-full p-1 pl-2 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option disabled selected>Pilih jenis BBM anda</option>
+            <option disabled selected>
+              Pilih jenis BBM anda
+            </option>
             {gas.map((gas) => (
               <option key={gas.id} value={gas.price}>
                 {gas.name}

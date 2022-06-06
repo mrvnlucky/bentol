@@ -1,11 +1,16 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/v1/vehicles/";
-// const API_URL = "https://bentol-backend.herokuapp.com/api/v1/vehicles/";
+// const API_URL = "http://localhost:5000/api/v1/vehicles/";
+const API_URL = "https://bentol-backend.herokuapp.com/api/v1/vehicles/";
 
 // Create new vehicle
-const createVehicle = async (vehicleData) => {
-  const response = await axios.post(API_URL, vehicleData);
+const createVehicle = async (vehicleData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.post(API_URL, vehicleData, config);
 
   return response.data;
 };
@@ -22,14 +27,24 @@ const getVehicleById = async (vehicleId) => {
 };
 
 // Update vehicle
-const updateVehicle = async (vehicleId, vehicleData) => {
-  const response = await axios.put(API_URL + vehicleId, vehicleData);
+const updateVehicle = async (vehicleId, vehicleData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.put(API_URL + vehicleId, vehicleData, config);
   return response.data;
 };
 
 // Delete vehicle by id
-const deleteVehicle = async (vehicleId) => {
-  const response = await axios.delete(API_URL + vehicleId);
+const deleteVehicle = async (vehicleId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.delete(API_URL + vehicleId, config);
 
   return response.data;
 };
