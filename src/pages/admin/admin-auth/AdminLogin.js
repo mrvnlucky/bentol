@@ -1,7 +1,7 @@
 // import React, { useState, useContext } from "react";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
+import "../../../styles/Login.css";
 // import AuthContext from "../context/AuthContext.js";
 
 import { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { login, reset } from "../features/auth/authSlice";
+import { login, reset } from "../../../features/admin/adminSlice";
 // import Spinner from "../components/Spinner";
 
 const Login = () => {
@@ -23,8 +23,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
+  const { admin, isError, isSuccess, message } = useSelector(
+    (state) => state.admin
   );
 
   useEffect(() => {
@@ -32,12 +32,12 @@ const Login = () => {
       toast.error(message, { position: toast.POSITION.BOTTOM_LEFT });
     }
 
-    if (isSuccess || user) {
-      navigate("/");
+    if (isSuccess || admin) {
+      navigate("/admin/gas");
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  }, [admin, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -49,12 +49,12 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const userData = {
+    const adminData = {
       email,
       password,
     };
 
-    dispatch(login(userData));
+    dispatch(login(adminData));
   };
 
   // if (isLoading) {
@@ -66,7 +66,7 @@ const Login = () => {
       <body className="body-bg min-h-screen md:px-0 align-middle grid content-center font-nunito tracking-wide">
         <div>
           <div className="text-center font-nunito font-bold mb-2">
-            <h1 className="">MASUK KE AKUN-MU</h1>
+            <h1 className="">MASUK KE AKUN ADMIN-MU</h1>
           </div>
           <div className="LoginForm">
             <form onSubmit={onSubmit} className="flex flex-col">
@@ -117,11 +117,11 @@ const Login = () => {
                 >
                   Masuk
                 </button>
-                <Link to="/register">
+                {/* <Link to="/register">
                   <div className="text-sm text-blue text-center p-3 hover:underline">
                     Belum punya akun?
                   </div>
-                </Link>
+                </Link> */}
               </div>
             </form>
           </div>

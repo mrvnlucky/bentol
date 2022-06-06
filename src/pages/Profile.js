@@ -17,7 +17,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message, { position: toast.POSITION.BOTTOM_LEFT });
     }
 
     dispatch(reset());
@@ -120,9 +120,7 @@ const Profile = () => {
                   Konsumsi BBM
                 </label>
                 <span className="mb-3.5 w-1/3 text-2xl text-dark-blue">
-                  {user.vehicle
-                    ? user.vehicle.kmpl + " KM/L"
-                    : "-"}
+                  {user.vehicle ? user.vehicle.kmpl + " KM/L" : "-"}
                 </span>
               </div>
               <Link to="/profile/edit">

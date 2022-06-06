@@ -29,12 +29,13 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message, { position: toast.POSITION.BOTTOM_LEFT });
     }
 
-    dispatch(getVehicles());
     if (isSuccess) {
+      return;
     }
+    dispatch(getVehicles());
 
     return () => {
       dispatch(reset());

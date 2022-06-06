@@ -27,6 +27,14 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Navbar from "./components/Navbar.js";
 import "./styles/App.css";
+import VehicleList from "./pages/admin/vehicle-crud/VehicleList.js";
+import VehicleCreateForm from "./pages/admin/vehicle-crud/VehicleCreateForm.js";
+import VehicleEditForm from "./pages/admin/vehicle-crud/VehicleEditForm.js";
+import GasCreateForm from "./pages/admin/gas-crud/GasCreateForm";
+import GasEditForm from "./pages/admin/gas-crud/GasEditForm";
+import GasList from "./pages/admin/gas-crud/GasList";
+import AdminLogin from "./pages/admin/admin-auth/AdminLogin";
+import AdminRegister from "./pages/admin/admin-auth/AdminRegister";
 
 // import axios from "axios";
 
@@ -42,6 +50,24 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile />} />
+
+          <Route path="/admin/" element={<AdminLogin />} />
+          <Route path="/admin/register" element={<AdminRegister />} />
+
+          <Route path="/admin/vehicles" element={<VehicleList />} />
+          <Route
+            path="/admin/vehicles/create"
+            element={<VehicleCreateForm />}
+          />
+          <Route
+            path="/admin/vehicles/edit/:id"
+            element={<VehicleEditForm />}
+          />
+
+          <Route path="/admin/gas" element={<GasList />} />
+          <Route path="/admin/gas/create" element={<GasCreateForm />} />
+          <Route path="/admin/gas/edit/:id" element={<GasEditForm />} />
+
           {/* <Route path="/article" element={<Article />} /> */}
           {/* <Route path="/articledetails" element={<ArticleDetails />} /> */}
         </Routes>
