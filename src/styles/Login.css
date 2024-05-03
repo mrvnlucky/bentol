@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.LoginForm {
+    @apply bg-white max-w-lg mx-auto p-5 rounded-md shadow-md;
+}
